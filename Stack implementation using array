@@ -64,6 +64,6 @@ void display()	//function to display the elements in the stack
   {
 	  printf("Stack elements are\n");
     for(i=top;i>=0;i--)	//looping to display all the elements in the stack
-          printf("%d",stack[i])
+          printf("%d",stack[i]);
   }
 }
