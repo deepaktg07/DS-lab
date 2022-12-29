@@ -3,7 +3,8 @@
 int stack[size];
 int top=-1;	//initialising stack array and top value void push(int value);
 void pop();
-void display();	//fuction protocol to perform function based on input void main()
+void display();	//fuction protocol to perform function based on input 
+void main()
 {
   int choice,value;
   while(1)	//to get infinite loop till termination
