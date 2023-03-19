@@ -1,70 +1,60 @@
 #include<stdio.h>
-#include<stdlib.h>		//declaring header files #define size 8	//declaring stack size
-int stack[size];
-int top=-1;	//initialising stack array and top value void push(int value);
+#include<stdlib.h>
+
+#define SIZE 10
+
+void push(int);
 void pop();
-void display();	//fuction protocol to perform function based on input 
+void display();
+
+int stack[SIZE], top = -1;
+
 void main()
 {
-  int choice,value;
-  while(1)	//to get infinite loop till termination
-  {
-    printf("\n\n*****MAIN MENU****\n\n");
-    printf("Enter your choice:\n 1.push \n 2.pop \n 3.display \n 4.exit\n\n"); scanf("%d",&choice);	//taking choice input
-    switch(choice)	//to call corresponding function based on input
-    {
-      case 1:printf("\n\nEnter element to push into the stack:\n"); 
-      scanf("%d",&value);
-      push(value);	//function call to push value
-      break;
-      case 2:pop();	//function call to pop the value
-      break;
-      case 3:display();	//function call to display the values in the stack
-      break;
-      case 4:exit(0);	//program termination 
-      break;
-      default:printf("Enter a correct choice:\n"); 
-      break;
-    }
-  }
+   int value, choice;
+     while(1){
+      printf("\n\n***** MENU *****\n");
+      printf("1. Push\n2. Pop\n3. Display\n4. Exit");
+      printf("\nEnter your choice: ");
+      scanf("%d",&choice);
+      switch(choice){
+	 case 1: printf("Enter the value to be insert: ");
+		 scanf("%d",&value);
+		 push(value);
+		 break;
+	 case 2: pop();
+		 break;
+	 case 3: display();
+		 break;
+	 case 4: exit(0);
+	 default: printf("\nWrong selection!!! Try again!!!");
+      }
+   }
 }
-
-
-
-void push(int value)	//function to push values into stack
-{
-  if(top==size-1)
-    printf("Stack overflow");
-
-  else
-  {
-    top++;	//incrementing top
-    stack[top]=value;	//pushing value to incremented top 
-    printf("Element %d is stacked successfully",value);
-  }
+void push(int value){
+   if(top == SIZE-1)
+      printf("\nStack is Full!!! Insertion is not possible!!!");
+   else{
+      top++;
+      stack[top] = value;
+      printf("\nInsertion success!!!");
+   }
 }
-
-void pop()	//function to pop elements from the stack
-{
-  if(top==-1)
-    printf("Stack empty\n");
-
-  else
-  {
-    printf("\nElement poped successfully");
-    top--; //poping elements by decrementing top
-  }
+void pop(){
+   if(top == -1)
+      printf("\nStack is Empty!!! Deletion is not possible!!!");
+   else{
+      printf("\nDeleted : %d", stack[top]);
+      top--;
+   }
 }
-
-void display()	//function to display the elements in the stack
-{
-  int i; 
-  if(top==-1)
-    printf("Stack empty\n");
-  else
-  {
-	  printf("Stack elements are\n");
-    for(i=top;i>=0;i--)	//looping to display all the elements in the stack
-          printf("%d",stack[i]);
-  }
+void display(){
+   if(top == -1)
+      printf("\nStack is Empty!!!");
+   else{
+      int i;
+      printf("\nStack elements are:\n");
+      for(i=top; i>=0; i--)
+	 printf("%d\n",stack[i]);
+   }
 }
